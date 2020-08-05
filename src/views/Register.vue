@@ -53,3 +53,17 @@
     </div>
   </form>
 </template>
+
+<style lang="scss">
+  .auth {
+    &-card {
+      width: 500px
+    }
+    &-submit {
+      width: 100%
+    }
+  }
+  .helper-text.invalid {
+    color: #f44336
+  }
+</style>
