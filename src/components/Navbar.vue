@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import M from 'materialize-css'
+
 export default {
   data () {
     return {
@@ -56,7 +58,8 @@ export default {
     this.interval = setInterval(() => {
       this.date = new Date()
     }, 1000)
-    this.dropdown = window.M.Dropdown.init(this.$refs.dropdown, {
+    // if not import M from 'materialize-css', use window.M.Dropdown.init()
+    this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: false,
       autoTrigger: true
     })
