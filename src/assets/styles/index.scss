@@ -129,7 +129,10 @@
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2rem
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 5rem
 }
 
 .currency-line {
@@ -137,16 +140,25 @@
   -ms-flex-align: center;
   align-items: center;
   border-bottom: 2px solid #fff;
-  padding-bottom: 1rem;
-  padding-top: 1.5rem
+  padding-bottom: 0.7rem;
+  padding-top: 0.7rem
 }
 
 .currency-line span {
-  font-size: 1.5rem
+  font-size: 1.2rem
 }
 
 .bill-card {
-  height: 310px
+  height: 340px;
+}
+
+.cards {
+  &__currency {
+    &-list td {
+      font-size: 1rem;
+      padding: 0.7rem;
+    }
+  }
 }
 
 .pointer {

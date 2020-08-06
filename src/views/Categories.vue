@@ -46,15 +46,15 @@
             <form>
               <div class="input-field" >
                 <select>
-                  <option>Category</option>
+                  <option placeholder="Выберите категорию">Category</option>
                 </select>
-                <label>Выберите категорию</label>
+                <!-- <label>Выберите категорию</label> -->
               </div>
 
               <div class="input-field">
                 <input type="text" id="name">
                 <label for="name">Название</label>
-                <span class="helper-text invalid">TITLE</span>
+                <span class="helper-text invalid">Выберите категорию</span>
               </div>
 
               <div class="input-field">

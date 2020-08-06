@@ -12,7 +12,7 @@
         </select>
         <label>Выберите категорию</label>
       </div>
-
+      <br>
       <p>
         <label>
           <input
