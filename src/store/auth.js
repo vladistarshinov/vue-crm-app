@@ -3,21 +3,19 @@ import { firebase } from '@firebase/app'
 export default {
   actions: {
     async login ({ dispatch, commit }, { email, password }) {
-      // eslint-disable-next-line no-useless-catch
       try {
         // async method and return promise => put 'await' + login () is async
         await firebase.auth().signInWithEmailAndPassword(email, password)
       } catch (e) {
+        commit('setError', e)
         throw e
       }
     },
     async logout () {
       await firebase.auth().signOut()
     },
-    async register ({ dispatch }, { email, password, name }) {
-      // eslint-disable-next-line no-useless-catch
+    async register ({ dispatch, commit }, { email, password, name }) {
       try {
-        // async method and return promise => put 'await' + login () is async
         await firebase.auth().createUserWithEmailAndPassword(email, password)
         const uid = await dispatch('getUserId')
         await firebase.database().ref(`/users/${uid}/info`).set({
@@ -25,7 +23,7 @@ export default {
           name
         })
       } catch (e) {
-        console.log(e)
+        commit('setError', e)
         throw e
       }
     },
