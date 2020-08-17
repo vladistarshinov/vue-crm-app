@@ -14,6 +14,7 @@ import M from 'materialize-css'
 import dateFilter from '@/filters/date'
 import currencyFilter from '@/filters/currency'
 import messagePlugin from '@/utils/message.plugin'
+import tooltipDirective from '@/directives/tooltip'
 import Loader from '@/components/Loader'
 
 Vue.config.productionTip = false
@@ -22,6 +23,7 @@ Vue.use(M)
 Vue.use(Vuelidate)
 Vue.filter('dateFilter', dateFilter)
 Vue.filter('currencyFilter', currencyFilter)
+Vue.directive('tooltip', tooltipDirective)
 Vue.use(messagePlugin)
 
 Vue.component('Loader', Loader)
