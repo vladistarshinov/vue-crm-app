@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@firebase/app": "^0.6.9",
+    "@firebase/app-types": "^0.6.1",
     "@firebase/auth": "^0.14.9",
     "@firebase/database": "^0.6.9",
     "core-js": "^3.6.4",
