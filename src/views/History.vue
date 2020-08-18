@@ -10,34 +10,43 @@
     <Loader v-if="loading" />
     <p class="center" v-else-if="!records.length">Записей пока нет. <router-link to="/record">Добавить новую запись</router-link></p>
     <section v-else>
-      <HistoryTable :records="records" />
+      <HistoryTable :records="items" />
+      <Pagination
+        v-model="currentPage"
+        :page-count="pageCount"
+        :click-handler="handlerChangePage"
+        :prev-text="'Назад'"
+        :next-text="'Вперед'"
+        :container-class="'pagination'"
+        :page-class="'waves-effect'"
+      />
     </section>
   </div>
 </template>
 
 <script>
 import HistoryTable from '@/components/HistoryTable'
+import paginationMixin from '@/mixins/pagination'
 export default {
   name: 'history',
+  mixins: [paginationMixin],
   data () {
     return {
       loading: true,
-      records: [],
-      categories: []
+      records: []
     }
   },
   async mounted () {
-    /* this.records = await this.$store.dispatch('fetchRecords') */
-    const records = await this.$store.dispatch('fetchRecords')
-    this.categories = await this.$store.dispatch('fetchCategories')
-    this.records = records.map(record => {
+    this.records = await this.$store.dispatch('fetchRecords')
+    const categories = await this.$store.dispatch('fetchCategories')
+    this.setupPagination(this.records.map(record => {
       return {
         ...record,
-        categoryTitle: this.categories.find(category => category.id === record.categoryId).title,
+        categoryTitle: categories.find(category => category.id === record.categoryId).title,
         typeText: record.type === 'income' ? 'Доход' : 'Расход',
         typeClass: record.type === 'income' ? 'green' : 'red'
       }
-    })
+    }))
     this.loading = false
   },
   components: {
