@@ -5,9 +5,10 @@
         <a href="#" @click.prevent="$emit('click')">
           <i class="material-icons black-text">dehaze</i>
         </a>
-        <span class="black-text">{{date | dateFilter('datetime')}}</span>
+        <span class="black-text hide-on-small-and-down">{{date | dateFilter('datetime')}}</span>
+        <span class="black-text hide-on-med-and-up">{{date | dateFilter('time')}}</span>
       </div>
-      <ul class="right hide-on-small-and-down">
+      <ul class="right">
         <li>
           <a
               class="dropdown-trigger black-text"

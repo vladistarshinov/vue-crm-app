@@ -1,7 +1,7 @@
 <template>
   <div class="col s12 m6">
     <div>
-      <div class="page-subtitle">
+      <div class="page-subtitle page-subtitle__edit">
         <h4>{{ 'Edit' | localizeFilter }}</h4>
       </div>
       <!-- prevent - without restart page -->

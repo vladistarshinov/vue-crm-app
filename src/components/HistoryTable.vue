@@ -5,7 +5,7 @@
       <th>#</th>
       <th>{{ 'Amount' | localizeFilter }}</th>
       <th>{{ 'Date' | localizeFilter }}</th>
-      <th>{{ 'Category' | localizeFilter }}</th>
+      <th class="hide-on-med-and-down">{{ 'Category' | localizeFilter }}</th>
       <th>{{ 'Type' | localizeFilter }}</th>
       <th>{{ 'Open' | localizeFilter }}</th>
     </tr>
@@ -15,8 +15,9 @@
     <tr v-for="(record, index) of records" :key="record.id">
       <td>{{ index + 1 }}</td>
       <td>{{ record.amount | currencyFilter('RUB') }}</td>
-      <td>{{ record.date | dateFilter('datetime') }}</td>
-      <td>{{ record.categoryTitle }}</td>
+      <td class="hide-on-med-and-down">{{ record.date | dateFilter('datetime') }}</td>
+      <td class="hide-on-large-and-up">{{ record.date | dateFilter('dateShort') }}</td>
+      <td class="hide-on-med-and-down">{{ record.categoryTitle }}</td>
       <td>
         <span class="white-text badge" :class="[record.typeClass]">{{ record.typeText }}</span>
       </td>

@@ -14,7 +14,7 @@
 
 .auth {
   &-card {
-    width: 500px;
+    width: 45%;
   }
   &-submit {
     width: 100%;
@@ -203,5 +203,42 @@
   label {
     display: flex;
     align-items: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .auth {
+    &-card {
+      width: 75%;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .page-title {
+    &__planning {
+      display: block;
+
+      h3, h4 {
+        font-size: 1.5rem;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .page-subtitle {
+    &__edit {
+      margin-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .auth {
+    &-card {
+      width: 100%;
+    }
   }
 }

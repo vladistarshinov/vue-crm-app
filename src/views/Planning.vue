@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="page-title">
+    <div class="page-title page-title__planning">
       <h3>{{ 'Menu_Planning' | localizeFilter }}</h3>
       <h4>{{info.bill | currencyFilter('RUB')}}</h4>
     </div>
