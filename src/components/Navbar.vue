@@ -51,13 +51,24 @@ export default {
   },
   methods: {
     async logout () {
+      const locale = this.$store.getters.info.locale
       await this.$store.dispatch('logout')
-      this.$router.push('/login?message=logout')
+      this.$router.push(
+        {
+          name: 'login',
+          query: {
+            message: 'logout',
+            locale: locale
+          }
+        }
+      )
     }
   },
   computed: {
     name () {
-      return this.$store.getters.info.name
+      return (
+        this.$store.getters.info.name
+      )
     }
   },
   mounted () {

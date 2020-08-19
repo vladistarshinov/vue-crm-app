@@ -12,7 +12,7 @@
             v-model="name"
             :class="{invalid: $v.name.$dirty && !$v.name.required}"
         >
-        <label for="description" :class="{active: name.length}">{{ 'Name' | localizeFilter }}</label>
+        <label for="description">{{ 'Name' | localizeFilter }}</label>
         <small
           class="helper-text invalid"
           v-if="$v.name.$dirty && !$v.name.required"
@@ -40,7 +40,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
 import CountryFlag from 'vue-country-flag'
+import M from 'materialize-css'
 export default {
+  metaInfo () {
+    return {
+      title: this.$title('ProfileTitle')
+    }
+  },
   data () {
     return {
       name: '',
@@ -53,6 +59,9 @@ export default {
   mounted () {
     this.name = this.info.name
     this.isLocaleRu = this.info.locale === 'ru-RU'
+    setTimeout(() => {
+      M.updateTextFields()
+    })
   },
   computed: {
     ...mapGetters(['info'])

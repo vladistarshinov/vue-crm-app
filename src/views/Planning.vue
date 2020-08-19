@@ -30,6 +30,11 @@ import currencyFilter from '@/filters/currency'
 import localizeFilter from '@/filters/localize'
 export default {
   name: 'planning',
+  metaInfo () {
+    return {
+      title: this.$title('Menu_Planning')
+    }
+  },
   data () {
     return {
       loading: true,

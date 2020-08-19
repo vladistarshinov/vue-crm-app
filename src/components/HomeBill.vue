@@ -4,9 +4,9 @@
       <div class="card-content white-text">
         <span class="card-title">{{ 'BillInCurrency' | localizeFilter }}</span>
 
-        <p v-for="currency of currencies" :key="currency" class="currency-line">
-          <span>{{getCurrency(currency) | currencyFilter(currency) }}</span>
-        </p>
+        <div v-for="(currency, idx) of currencies" :key="idx" class="currency-line">
+          <span>{{ getCurrency(currency) | currencyFilter(currency) }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -22,12 +22,16 @@ export default {
   },
   computed: {
     base () {
-      return this.$store.getters.info.bill / (this.rates.RUB / this.rates.EUR)
+      return (
+        this.$store.getters.info.bill / (this.rates.RUB / this.rates.EUR)
+      )
     }
   },
   methods: {
     getCurrency (currency) {
-      return Math.floor(this.base * this.rates[currency])
+      return (
+        Math.floor(this.base * this.rates[currency])
+      )
     }
   }
 }

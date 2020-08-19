@@ -31,6 +31,11 @@ import paginationMixin from '@/mixins/pagination'
 import localizeFilter from '@/filters/localize'
 export default {
   name: 'history',
+  metaInfo () {
+    return {
+      title: this.$title('Menu_History')
+    }
+  },
   extends: Pie,
   mixins: [paginationMixin],
   data () {

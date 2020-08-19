@@ -92,6 +92,11 @@ import localizeFilter from '@/filters/localize'
 
 export default {
   name: 'register',
+  metaInfo () {
+    return {
+      title: this.$title('Register')
+    }
+  },
   data () {
     return {
       name: '',

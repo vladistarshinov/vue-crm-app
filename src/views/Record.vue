@@ -86,6 +86,11 @@ import { mapGetters } from 'vuex'
 import M from 'materialize-css'
 export default {
   name: 'record',
+  metaInfo () {
+    return {
+      title: this.$title('Menu_NewRecord')
+    }
+  },
   data () {
     return {
       loading: true,
