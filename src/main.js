@@ -14,9 +14,11 @@ import M from 'materialize-css'
 import Paginate from 'vuejs-paginate'
 import dateFilter from '@/filters/date'
 import currencyFilter from '@/filters/currency'
+import localizeFilter from '@/filters/localize'
 import messagePlugin from '@/utils/message.plugin'
 import tooltipDirective from '@/directives/tooltip'
 import Loader from '@/components/Loader'
+import CountryFlag from 'vue-country-flag'
 
 Vue.config.productionTip = false
 
@@ -25,10 +27,12 @@ Vue.use(M)
 Vue.component('Pagination', Paginate)
 Vue.filter('dateFilter', dateFilter)
 Vue.filter('currencyFilter', currencyFilter)
+Vue.filter('localizeFilter', localizeFilter)
 Vue.directive('tooltip', tooltipDirective)
 Vue.use(messagePlugin)
 
 Vue.component('Loader', Loader)
+Vue.component('vue-country-flag', CountryFlag)
 
 firebase.initializeApp(firebaseConfig)
 

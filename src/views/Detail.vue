@@ -3,19 +3,19 @@
     <Loader v-if="loading" />
     <div v-else-if="record">
       <div class="breadcrumb-wrap">
-        <router-link to="/history" class="breadcrumb">История</router-link>
+        <router-link to="/history" class="breadcrumb">{{ 'Menu_History' | localizeFilter }}</router-link>
        <!-- <a> need for settings of materialize (for cancel reloading of page - @click.prevent) -->
         <a class="breadcrumb" @click.prevent>
-          {{ record.type === 'income' ? 'Доход' : 'Расход' }}
+          {{ record.type === 'income' ? 'Income' : 'Outcome' | localizeFilter }}
         </a>
       </div>
       <div class="row">
         <div class="col s12 m6">
           <div class="card" :class="{'green': record.type === 'income', 'red': record.type === 'outcome'}">
             <div class="card-content white-text">
-              <p>Описание: {{ record.description }}</p>
-              <p>Сумма: {{ record.amount | currencyFilter('RUB') }}</p>
-              <p>Категория: {{ record.categoryTitle }}</p>
+              <p>{{ 'Description' | localizeFilter }}: {{ record.description }}</p>
+              <p>{{ 'Amount' | localizeFilter }}: {{ record.amount | currencyFilter('RUB') }}</p>
+              <p>{{ 'Category' | localizeFilter }}: {{ record.categoryTitle }}</p>
 
               <small>{{ record.date | dateFilter('datetime') }}</small>
             </div>

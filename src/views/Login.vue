@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title">{{ 'CRM_Title' | localizeFilter }}</span>
       <div class="input-field">
         <input
             id="email"
@@ -14,13 +14,13 @@
           class="helper-text invalid"
           v-if="$v.email.$dirty && !$v.email.required"
         >
-          Поле Email не должно быть пустым
+          {{ 'Message_EmailRequired' | localizeFilter }}
         </small>
         <small
           class="helper-text invalid"
           v-else-if="$v.email.$dirty && !$v.email.email"
         >
-          Введите корректный Email
+          {{ 'Message_EmailValid' | localizeFilter }}
         </small>
       </div>
       <div class="input-field">
@@ -30,18 +30,18 @@
           v-model.trim="password"
           :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
         >
-        <label for="password">Пароль</label>
+        <label for="password">{{ 'Password' | localizeFilter }}</label>
         <small
           class="helper-text invalid"
           v-if="$v.password.$dirty && !$v.password.required"
         >
-          Введите пароль (не менее {{$v.password.$params.minLength.min}} символов)
+          {{ 'Message_EnterPassword' | localizeFilter }} ({{ 'notLess' | localizeFilter }} {{$v.password.$params.minLength.min}} {{ 'symbol' | localizeFilter }})
         </small>
          <small
           class="helper-text invalid"
           v-else-if="$v.password.$dirty && !$v.password.minLength"
         >
-          Введите пароль (осталось ввести {{$v.password.$params.minLength.min - password.length}})
+          {{ 'Message_EnterPassword' | localizeFilter }} ({{ 'leftToEnter' | localizeFilter }} {{$v.password.$params.minLength.min - password.length}})
         </small>
       </div>
     </div>
@@ -51,14 +51,14 @@
             class="btn waves-effect waves-light auth-submit"
             type="submit"
         >
-          Войти
+          {{ 'Login' | localizeFilter }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        Нет аккаунта?
-        <router-link to="/register">Зарегистрироваться</router-link>
+        {{ 'NoAccount' | localizeFilter }}
+        <router-link to="/register">{{ 'Register' | localizeFilter }}</router-link>
       </p>
     </div>
   </form>
@@ -67,6 +67,7 @@
 <script>
 import { email, required, minLength } from 'vuelidate/lib/validators'
 import messages from '@/utils/messages'
+import localizeFilter from '@/filters/localize'
 
 export default {
   name: 'login',
@@ -82,7 +83,7 @@ export default {
   },
   mounted () {
     if (messages[this.$route.query.message]) {
-      this.$message(messages[this.$route.query.message])
+      this.$message(localizeFilter(messages[this.$route.query.message]))
     }
   },
   methods: {

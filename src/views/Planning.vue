@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Планирование</h3>
+      <h3>{{ 'Menu_Planning' | localizeFilter }}</h3>
       <h4>{{info.bill | currencyFilter('RUB')}}</h4>
     </div>
     <Loader v-if="loading" />
-    <p class="center" v-else-if="!categories.length">Категорий пока нет. <router-link to="/categories">Добавить новую категорию</router-link></p>
+    <p class="center" v-else-if="!categories.length">{{ 'NoCategories' | localizeFilter }}. <router-link to="/categories">{{ 'AddFirst' | localizeFilter }}</router-link></p>
     <section v-else>
       <div v-for="category of categories" :key="category.id">
         <p>
           <strong>{{category.title}}</strong>
-          {{category.spend | currencyFilter}} из {{category.limit | currencyFilter}}
+          {{category.spend | currencyFilter}} {{ 'Of' | localizeFilter }} {{category.limit | currencyFilter}}
         </p>
         <div class="progress" v-tooltip="category.tooltip">
           <div
@@ -27,6 +27,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import currencyFilter from '@/filters/currency'
+import localizeFilter from '@/filters/localize'
 export default {
   name: 'planning',
   data () {
@@ -57,7 +58,7 @@ export default {
           ? 'yellow'
           : 'red'
       const tooltipValue = сategory.limit - spend
-      const tooltip = `${tooltipValue < 0 ? 'Превышение на: ' : 'Осталось: '} ${currencyFilter(Math.abs(tooltipValue))}`
+      const tooltip = `${tooltipValue < 0 ? localizeFilter('MoreThan') : localizeFilter('Stayed')} ${currencyFilter(Math.abs(tooltipValue))}`
 
       return {
         ...сategory,
