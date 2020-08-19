@@ -5,7 +5,7 @@
         <div class="card-header">
           <span class="card-title">{{ 'CurrencyAmountTitle' | localizeFilter }}</span>
         </div>
-        <table class="cards">
+        <table class="table cards table-striped">
           <thead>
           <tr>
             <th>{{ 'Currency' | localizeFilter }}</th>
@@ -18,7 +18,7 @@
           <tr v-for="currency in currencies" :key="currency" class="cards__currency-list">
             <td>{{currency}}</td>
             <td>{{rates[currency].toFixed(5)}}</td>
-            <td>{{date | dateFilter('date')}}</td>
+            <td>{{date | dateFilter('dateShort')}}</td>
           </tr>
           </tbody>
         </table>

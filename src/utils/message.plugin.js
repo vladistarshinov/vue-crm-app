@@ -8,7 +8,7 @@ export default {
     }
 
     Vue.prototype.$error = html => {
-      M.toast({ html: `[${localizeFilter('Error')}] ${html}` })
+      M.toast({ html: `[${localizeFilter('Error')}]: ${html}` })
     }
   }
 }

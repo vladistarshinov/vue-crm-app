@@ -10,9 +10,9 @@
       <div v-for="category of categories" :key="category.id">
         <p>
           <strong>{{category.title}}</strong>
-          {{category.spend | currencyFilter}} {{ 'Of' | localizeFilter }} {{category.limit | currencyFilter}}
+          {{category.spend | currencyFilter('RUB') }} {{ 'Of' | localizeFilter }} {{ category.limit | currencyFilter('RUB') }}
         </p>
-        <div class="progress" v-tooltip="category.tooltip">
+        <div class="progress">
           <div
               class="determinate"
               :class="[category.progressColor]"
